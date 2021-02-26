@@ -14,10 +14,12 @@ function compute()
         var interest = principal.value * years * rate / 100; 
 
         var result = document.getElementById("result");
-        result.innerHTML = "If you deposit " + principal.value + "," 
-            + " at an interest rate of " + rate + "%."
-            + " You will receive an amount of " + interest + ","
-            + " in the year " + calcYear(years);
+        var resultMessage = "If you deposit <span class='highlight'>" + principal.value + "</span>,<br/>" 
+        + " at an interest rate of <span class='highlight'>" + rate + "%</span>.<br/>"
+        + " You will receive an amount of <span class='highlight'>" + interest + "</span>,<br/>"
+        + " in the year <span class='highlight'>" + calcYear(years) + "</span>";
+        console.log(resultMessage);
+        result.innerHTML = resultMessage;
     }
 
 }
@@ -25,10 +27,12 @@ function compute()
 // This function calculates a year value 
 // based on the current year and number of years offset 
 function calcYear(year_offset) {
-    var currentYear = new Date().getFullYear;
-    return currentYear + year_offset;
+    var currentYear = new Date().getFullYear();
+    return currentYear + parseInt(year_offset);
 }
 
+// This function takes the value of the range bar input field
+// and displays the value in the element "ratevalue"
 function ratechange()
 {
     var rate = document.getElementById("rate").value;
